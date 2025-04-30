@@ -201,7 +201,7 @@ def show_game_page():
             if idx < len(st.session_state.current_items):
                 item = st.session_state.current_items[idx]
                 with col:
-                    st.markdown(f"<div class='item-card' id='{item['id']}'>", unsafe_allow_html=True)
+                    #st.markdown(f"<div class='item-card' id='{item['id']}'>", unsafe_allow_html=True)
                     st.markdown(f"<div class='item-emoji'>{get_emoji_for_item(item['type'], item['name'])}</div>", 
                                unsafe_allow_html=True)
                     st.markdown(f"<div class='item-name'>{item['name']}</div>", unsafe_allow_html=True)
@@ -235,7 +235,7 @@ def show_game_page():
             if i < len(st.session_state.current_baskets):
                 basket = st.session_state.current_baskets[i]
                 with basket_col:
-                    st.markdown(f"<div class='basket' id='{basket['id']}'>", unsafe_allow_html=True)
+                    #st.markdown(f"<div class='basket' id='{basket['id']}'>", unsafe_allow_html=True)
                     st.markdown(f"<div class='basket-emoji'>{basket['emoji']}</div>", unsafe_allow_html=True)
                     st.markdown(f"<div class='basket-label'>{basket['label']}</div>", unsafe_allow_html=True)
                     st.markdown("</div>", unsafe_allow_html=True)
