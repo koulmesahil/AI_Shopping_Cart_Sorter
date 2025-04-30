@@ -36,12 +36,9 @@ init_session_state()
 
 # Main app structure
 def main():
-    # Display header and avatar
-    col1, col2 = st.columns([6, 1])
-    with col1:
-        st.markdown("<h1 class='game-title'>🛒 Shopping Sorter 🛒</h1>", unsafe_allow_html=True)
-    with col2:
-        display_avatar()
+    
+    st.markdown("<h1 class='game-title'>🛒 Shopping Sorter 🛒</h1>", unsafe_allow_html=True)
+
     
     # Show appropriate page based on session state
     if st.session_state.page == 'welcome':
@@ -73,7 +70,7 @@ def show_welcome_page():
     """, unsafe_allow_html=True)
     
     # Welcome section
-    st.markdown("<h2 class='welcome-text'>Welcome to Shopping Sorter!</h2>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: center;'><h2 class='welcome-text'>Welcome to Shopping Sorter!</h2></div>", unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
@@ -172,7 +169,7 @@ def show_game_page():
     with col1:
         st.markdown(f"<div class='score-display'>Stars: {st.session_state.score} ⭐</div>", unsafe_allow_html=True)
     with col2:
-        st.markdown(f"<h2>Level {st.session_state.current_level}</h2>", unsafe_allow_html=True)
+        st.markdown(f"<div style='text-align: center;'><h2>Level {st.session_state.current_level}</h2></div>", unsafe_allow_html=True)
     with col3:
         st.markdown(f"<div class='score-display'>Items: {len(st.session_state.current_items)}</div>", unsafe_allow_html=True)
     
