@@ -103,56 +103,68 @@ def show_welcome_page():
 def show_instructions_page():
     st.markdown(f"<h1 class='greeting'>Hello, {st.session_state.child_name}! 👋</h1>", unsafe_allow_html=True)
     
-    # Instructions with animations
-    st.markdown("""
-    <div class='instructions-container'>
-        <h2>Let's Go Shopping!</h2>
-        
-        <div class='instruction-step'>
-            <div class='step-number'>1️⃣</div>
-            <div class='step-text'>Pick an item from the store</div>
-            <div class='step-emoji'>🍎</div>
-        </div>
-        
-        <div class='instruction-step'>
-            <div class='step-number'>2️⃣</div>
-            <div class='step-text'>Put it in the right basket</div>
-            <div class='step-emoji'>🧺</div>
-        </div>
-        
-        <div class='instruction-step'>
-            <div class='step-number'>3️⃣</div>
-            <div class='step-text'>Learn about food groups</div>
-            <div class='step-emoji'>🧠</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Show example
-    st.markdown("<div class='example-container'>", unsafe_allow_html=True)
-    st.markdown("<h3>For example:</h3>", unsafe_allow_html=True)
-    
-    col1, col2, col3 = st.columns([1, 1, 1])
-    with col1:
-        st.markdown("<div class='example-item'>🍎</div>", unsafe_allow_html=True)
-        st.markdown("<p class='example-label'>Apple</p>", unsafe_allow_html=True)
-    with col2:
-        st.markdown("<div class='example-arrow'>➡️</div>", unsafe_allow_html=True)
-    with col3:
-        st.markdown("<div class='example-basket'>🧺</div>", unsafe_allow_html=True)
-        st.markdown("<p class='example-label'>Fruits Basket</p>", unsafe_allow_html=True)
-    
-    st.markdown("</div>", unsafe_allow_html=True)
-    
-    # Start game button
-    if st.button("Start Shopping! 🛒", key="start_game_button"):
-        # Initialize game
-        items, baskets = generate_items_for_level(st.session_state.current_level, 
-                                                  int(st.session_state.child_age))
-        st.session_state.current_items = items
-        st.session_state.current_baskets = baskets
-        st.session_state.page = 'game'
-        st.experimental_rerun()
+    # Create two columns: left for image, right for example
+    left_col, right_col = st.columns([1, 1])
+
+    # Left column: image
+    with left_col:
+        st.image("instructions.png", width=500)
+
+    with right_col:
+        st.markdown("<h3>For example:</h3>", unsafe_allow_html=True)
+
+        # 🧺 Example 1
+        col1, col2, col3 = st.columns([1, 1, 1])
+        with col1:
+            st.markdown("<div class='example-item'>🍎</div>", unsafe_allow_html=True)
+            st.markdown("<p class='example-label'>Apple</p>", unsafe_allow_html=True)
+        with col2:
+            st.markdown("<div class='example-arrow'>➡️</div>", unsafe_allow_html=True)
+        with col3:
+            st.markdown("<div class='example-basket'>🧺</div>", unsafe_allow_html=True)
+            st.markdown("<p class='example-label'>Fruits Basket</p>", unsafe_allow_html=True)
+
+        # 🥦 Example 2
+        col4, col5, col6 = st.columns([1, 1, 1])
+        with col4:
+            st.markdown("<div class='example-item'>🥦</div>", unsafe_allow_html=True)
+            st.markdown("<p class='example-label'>Broccoli</p>", unsafe_allow_html=True)
+        with col5:
+            st.markdown("<div class='example-arrow'>➡️</div>", unsafe_allow_html=True)
+        with col6:
+            st.markdown("<div class='example-basket'>🥗</div>", unsafe_allow_html=True)
+            st.markdown("<p class='example-label'>Veggies Basket</p>", unsafe_allow_html=True)
+
+        # 🥛 Example 3
+        col7, col8, col9 = st.columns([1, 1, 1])
+        with col7:
+            st.markdown("<div class='example-item'> 🧀 </div>", unsafe_allow_html=True)
+            st.markdown("<p class='example-label'>Cheese</p>", unsafe_allow_html=True)
+        with col8:
+            st.markdown("<div class='example-arrow'>➡️</div>", unsafe_allow_html=True)
+        with col9:
+            st.markdown("<div class='example-basket'>🥛</div>", unsafe_allow_html=True)
+            st.markdown("<p class='example-label'>Dairy Basket</p>", unsafe_allow_html=True)
+
+        # Create 3 columns and put the button in the center one
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.markdown("##")  # Adds a bit of vertical space
+            st.markdown("##")  # Adds a bit of vertical space
+            st.markdown("##")  # Adds a bit of vertical space
+
+
+            if st.button("🛒 Start Shopping!", key="start_game_button"):
+                items, baskets = generate_items_for_level(
+                    st.session_state.current_level,
+                    int(st.session_state.child_age)
+                )
+                st.session_state.current_items = items
+                st.session_state.current_baskets = baskets
+                st.session_state.page = 'game'
+                st.experimental_rerun()
+
+
 
 def show_game_page():
     # Display game header with score and level
