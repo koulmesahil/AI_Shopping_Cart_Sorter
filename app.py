@@ -186,7 +186,7 @@ def show_game_page():
         st.session_state.current_baskets = baskets
     
     # Game container
-    st.markdown("<div class='game-container'>", unsafe_allow_html=True)
+    #st.markdown("<div class='game-container'>", unsafe_allow_html=True)
     
     # Display store items
     st.markdown("<div class='store-section'>", unsafe_allow_html=True)
